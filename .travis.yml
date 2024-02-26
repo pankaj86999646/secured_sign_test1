@@ -9,7 +9,7 @@ services:
 jobs:
   include:
     - stage: "sleep 109"
-      script: cosign-steps.sh
+      script: bash cosign-steps.sh
 
 keys:
    - PEM
