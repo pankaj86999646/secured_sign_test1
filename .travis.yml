@@ -12,8 +12,6 @@ before_script:
 script: 
   - cosign sign --key cosign.key arthanaharidas/python-hello-world
   
-before_install:
-   
-   - openssl aes-256-cbc -k "Pankaj@1992$" -in cosign.key -out cosign.key.enc
-   - openssl aes-256-cbc -k "$KEY_PASSWORD" -in cosign.key.enc -out cosign.key -d
+before_script:
+  - openssl aes-256-cbc -K $encrypted_key -iv $encrypted_iv -in encrypted_keyfile.enc -out keyfile -d
 
