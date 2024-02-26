@@ -9,8 +9,10 @@ env:
 before_script: 
   - travis_key PEM cosign.key  # cosign requires the key to be in a file
 
-script: 
-  - cosign sign --key cosign.key arthanaharidas/python-hello-world
+jobs:
+  include:
+    - stage: "sleep 109"
+      script: bash cosign-steps.sh
   
 before_install:
    - openssl aes-256-cbc -K $encrypted_51f11bfbfc28_key -iv $encrypted_51f11bfbfc28_iv -in cosign.key.enc -out cosign.key -d
