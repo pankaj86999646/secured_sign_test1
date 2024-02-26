@@ -5,7 +5,7 @@ language: python
 keys:
   - PEM
 env:
-  secret: “encrypted_51f11bfbfc28_iv” # encrypted COSIGN_PASSWORD=...  string; see cosign doc
+  secret: “encrypted_51f11bfbfc28_key” # encrypted COSIGN_PASSWORD=...  string; see cosign doc
 before_script: 
   - travis_key PEM cosign.key  # cosign requires the key to be in a file
 
