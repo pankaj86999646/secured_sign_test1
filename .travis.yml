@@ -5,7 +5,7 @@ language: python
 keys:
   - PEM
 env:
-  secret: “encrypted_51f11bfbfc28_key” # encrypted COSIGN_PASSWORD=...  string; see cosign doc
+  secret: “key” # encrypted COSIGN_PASSWORD=...  string; see cosign doc
 before_script: 
   - travis_key PEM cosign.key  # cosign requires the key to be in a file
 
@@ -13,4 +13,7 @@ script:
   - cosign sign --key cosign.key arthanaharidas/python-hello-world
   
 before_install:
-   - openssl aes-256-cbc -K $encrypted_51f11bfbfc28_key -iv $encrypted_51f11bfbfc28_iv -in cosign.key.enc -out cosign.key -d
+   
+   - openssl aes-256-cbc -k "Pankaj@1992$" -in cosign.key -out cosign.key.enc
+   - openssl aes-256-cbc -k "$KEY_PASSWORD" -in cosign.key.enc -out cosign.key -d
+
